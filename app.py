@@ -1,11 +1,7 @@
 from flask import Flask,render_template,url_for,request
 from flask_material import Material
-
-# EDA PKg
-import pandas as pd 
-import numpy as np 
-
-# ML Pkg
+import pandas as pd
+import numpy as np
 from sklearn.externals import joblib
 
 
@@ -30,14 +26,13 @@ def analyze():
 		sepal_width = request.form['sepal_width']
 		model_choice = request.form['model_choice']
 
-		# Clean the data by convert from unicode to float 
+		# Clean the data by convert from unicode to float
 		sample_data = [sepal_length,sepal_width,petal_length,petal_width]
 		clean_data = [float(i) for i in sample_data]
 
 		# Reshape the Data as a Sample not Individual Features
 		ex1 = np.array(clean_data).reshape(1,-1)
 
-		# ex1 = np.array([6.2,3.4,5.4,2.3]).reshape(1,-1)
 
 		# Reloading the Model
 		if model_choice == 'logitmodel':
